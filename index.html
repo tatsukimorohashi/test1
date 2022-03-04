@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://tatsukimorohashi.github.io/test/style.css" />
+    <title>
+        マンション棟一覧画面
+    </title>
+
+    <script type="text/javascript">
+    
+    //ユーザー名クリックでログアウトのポップアウト
+    function log(){
+        if(window.confirm('ログアウトしますか？')){
+            location.href ="#"; //飛ばしたいHTMLのパスを入れる
+        }else{
+           ;
+        }
+    }
+
+    //画面ロード完了時、データがない場合アラート
+    function message(){
+        if(1==1){ //ここにデータがある場合、を入れる
+        }else{
+        alert("データがありません");
+        }
+    }
+
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
+    <script>
+    //表を行全体でクリックできるようにする
+    jQuery(function($){
+        $('tr[data-href]').click(function(e){ //クリックイベント
+            if(!$(e.target).is('a')){ //クリックした要素がa以外であれば
+                //その要素の先祖要素で一番近いtrのdata-href属性の値のURLへ遷移出来るように
+                window.location = $(e.target).closest('tr').data('herf');
+            }
+        });
+    });
+    </script>
+
+</head>
+
+<body onload="message()">
+
+    <!--ヘッダーエリア-->
+    <div class="header">
+        <div class="flex">
+            <!--タイトル-->
+            <h1 class="title">
+                担当一覧
+            </h1>
+            <!--ユーザー名-->
+            <label for="logout">
+                <img src="https://github.com/tatsukimorohashi/test1/issues/1#issue-1159130467">
+                <span>ユーザー名</span>
+                <input type="button" id="logout" onClick="log()">
+            </label>
+        </div>
+        <hr>
+    </div> 
+    <div class="main">
+
+        <!--表-->
+        <table>
+            <thead>
+            <tr>
+                <th>マンション名</th>
+                <th>棟名</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="record" data-href="#">
+                <td>ナイスアーバン中野坂上</th>
+                <td></td>
+            </tr>
+            <tr class="record" data-href="#">
+                <td>恵比寿ガーデンプレイス</td>
+                <td>壱番館</td>
+            </tr>
+            <tr class="record" data-href="#">
+                <td>恵比寿ガーデンプレイス</td>
+                <td>弐番館</td>
+            </tr>
+            <tr class="record" data-href="#">
+                <td>恵比寿ガーデンプレイス</td>
+                <td>参番館</td>
+            </tr>
+            <tr class="record" data-href="#">
+                <td>恵比寿ガーデンプレイス</td>
+                <td>四番館</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!--ページング-->
+        <ul class="example">
+            <li class="prev">prev</li>
+            <li class="this">1</li>
+            <li><a href="page-2.html">2</a></li>
+            <li><a href="page-3.html">3</a></li>
+            <li><a href="page-2.html">next</a></li>
+        </ul>
+        
+    </div>
+</body>
+</html>
